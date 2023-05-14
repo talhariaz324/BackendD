@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const cors =  require("cors");
+
 // const path = require("path");
 const app = express();
 // Config
@@ -13,6 +15,7 @@ const errorHandler = require("../backend/middleware/error");
 
 app.use(express.json());
 app.use(cookieParser()); // it must be here before routes
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 // Routes
